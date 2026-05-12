@@ -1,0 +1,201 @@
+Actúa como un Arquitecto Enterprise Senior especializado en:
+
+- Edge Computing
+- IoT empresarial
+- Sistemas biométricos ZKTeco
+- Arquitecturas híbridas local/cloud
+- SaaS multiempresa
+- TCP/IP device management
+
+Necesito diseñar correctamente la arquitectura EDGE LOCAL de mi plataforma biométrica enterprise.
+
+CONTEXTO:
+
+Cada sucursal tendrá:
+- Equipos biométricos ZKTeco
+- Una PC Windows existente (caja)
+- Un agente local instalado
+
+Los equipos biométricos funcionan únicamente por TCP/IP local dentro de la LAN.
+
+IMPORTANTE:
+El cloud NO debe conectarse directamente a los biométricos.
+
+Toda comunicación con ZKTeco debe pasar obligatoriamente por el EDGE local.
+
+OBJETIVO:
+
+Diseñar un EDGE NODE profesional que funcione como:
+
+- Local Device Gateway
+- Bridge IoT
+- Agente Edge inteligente
+- Gateway TCP/IP para biométricos
+
+El edge NO debe convertirse en un mini ERP ni en un dashboard administrativo.
+
+Debe ser solamente:
+- infraestructura técnica
+- conectividad
+- buffering
+- sincronización
+- resiliencia
+- transporte seguro
+
+QUIERO DEFINIR:
+
+========================
+EDGE LOCAL RESPONSABILITIES
+========================
+
+El edge debe encargarse EXCLUSIVAMENTE de:
+
+- Comunicación TCP/IP con ZKTeco
+- Descubrimiento automático de dispositivos en LAN
+- Configuración IP local de biométricos
+- Configuración de puertos
+- Test de conectividad TCP
+- Captura de marcaciones
+- Cola offline
+- Buffer temporal SQLite
+- Reintentos automáticos
+- Heartbeat al cloud
+- Health checks
+- Logs locales
+- Auto actualización
+- Ejecución de comandos remotos enviados desde cloud
+- Sincronización segura MQTT/HTTPS
+- Cache temporal
+- Tolerancia a caída de internet
+
+========================
+LOCAL TECHNICAL DASHBOARD
+========================
+
+Necesito un dashboard LOCAL muy minimalista y técnico.
+
+Ejemplo:
+http://localhost:8080
+
+o
+
+http://IP-CAJA:8080
+
+SOLO debe permitir:
+
+- Detectar biométricos
+- Configurar IP
+- Configurar puertos
+- Test conexión
+- Ver estado dispositivos
+- Ver estado MQTT
+- Ver logs
+- Reiniciar agente
+- Ver cola offline
+- Actualizar agente
+
+NO debe incluir:
+- RRHH
+- empleados
+- horarios
+- reportes
+- dashboard SaaS
+- analytics
+- lógica empresarial
+
+========================
+CLOUD SAAS RESPONSIBILITIES
+========================
+
+El cloud debe encargarse exclusivamente de:
+
+- RRHH
+- asistencia
+- horarios
+- reportes
+- faltas
+- retrasos
+- analytics
+- dashboard ejecutivo
+- multiempresa
+- auditoría
+- usuarios
+- roles y permisos
+
+========================
+ARQUITECTURA
+========================
+
+Flujo esperado:
+
+ZKTeco
+   │
+ TCP/IP LAN
+   │
+EDGE LOCAL
+   │
+ MQTT / HTTPS TLS
+   │
+CLOUD SAAS
+   │
+Frontend Web
+
+IMPORTANTE:
+- El cloud solo observa dispositivos
+- El cloud NO accede directamente a IPs locales
+- El edge actúa como puente seguro
+- El edge mantiene buffer temporal
+- El edge NO almacena histórico permanente
+
+========================
+REQUISITOS TÉCNICOS
+========================
+
+EDGE STACK:
+- Golang
+- SQLite
+- MQTT Client
+- Embedded Web UI
+- TCP Socket Manager
+- Local REST API
+
+CLOUD:
+- NestJS
+- PostgreSQL
+- MQTT Broker
+- WebSocket
+- Multi tenant SaaS
+
+FRONTEND:
+- Next.js
+- Dashboard enterprise
+- Tiempo real
+
+========================
+QUIERO QUE EXPLIQUES
+========================
+
+1. Cómo diseñar correctamente el Edge Node
+2. Cómo separar Edge vs Cloud
+3. Cómo implementar configuración IP local
+4. Cómo detectar biométricos automáticamente
+5. Cómo implementar dashboard técnico local
+6. Cómo manejar sincronización offline
+7. Cómo evitar duplicar lógica
+8. Cómo manejar seguridad
+9. Cómo manejar observabilidad
+10. Cómo diseñar arquitectura enterprise real
+11. Qué errores evitar
+12. Cómo escalar a cientos de sucursales
+
+IMPORTANTE:
+
+Quiero una respuesta tipo:
+- CTO
+- Arquitecto Enterprise
+- IoT Architect
+- Edge Computing Specialist
+
+No quiero teoría genérica.
+
+Quiero diseño real de arquitectura profesional para plataforma biométrica enterprise moderna.

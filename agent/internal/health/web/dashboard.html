@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edge Agent - Sistema Local</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif}</style>
+</head>
+<body class="bg-gray-900 text-gray-100">
+<div class="max-w-6xl mx-auto p-4">
+  <div class="flex items-center justify-between mb-6">
+    <div>
+      <h1 class="text-xl font-bold text-indigo-400">Edge Agent</h1>
+      <p class="text-sm text-gray-500" id="agentInfo">Inicializando...</p>
+    </div>
+    <div class="flex gap-2">
+      <button onclick="scanDevices()" class="px-3 py-1.5 bg-indigo-600 rounded text-sm hover:bg-indigo-700">Escanear</button>
+      <button onclick="restartAgent()" class="px-3 py-1.5 bg-red-700 rounded text-sm hover:bg-red-800">Reiniciar</button>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6" id="statsCards">
+    <div class="bg-gray-800 rounded-lg p-4"><p class="text-xs text-gray-400">Dispositivos</p><p class="text-2xl font-bold" id="deviceCount">-</p></div>
+    <div class="bg-gray-800 rounded-lg p-4"><p class="text-xs text-gray-400">Cola Offline</p><p class="text-2xl font-bold" id="queueSize">-</p></div>
+    <div class="bg-gray-800 rounded-lg p-4"><p class="text-xs text-gray-400">MQTT</p><p class="text-2xl font-bold" id="mqttStatus">-</p></div>
+    <div class="bg-gray-800 rounded-lg p-4"><p class="text-xs text-gray-400">Uptime</p><p class="text-2xl font-bold text-green-400" id="uptime">-</p></div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+    <div class="lg:col-span-2 bg-gray-800 rounded-lg p-4">
+      <h2 class="text-sm font-semibold text-gray-300 mb-3">Dispositivos Detectados</h2>
+      <div id="deviceList" class="space-y-2"><p class="text-sm text-gray-500">Escanea la red para detectar dispositivos...</p></div>
+    </div>
+    <div class="bg-gray-800 rounded-lg p-4">
+      <h2 class="text-sm font-semibold text-gray-300 mb-3">Configuración IP</h2>
+      <div class="space-y-2">
+        <input id="cfgIp" placeholder="192.168.1.100" class="w-full px-2 py-1.5 bg-gray-700 border border-gray-600 rounded text-sm text-white placeholder-gray-500">
+        <input id="cfgPort" placeholder="4370" value="4370" class="w-full px-2 py-1.5 bg-gray-700 border border-gray-600 rounded text-sm text-white">
+        <button onclick="testConnection()" class="w-full px-3 py-1.5 bg-gray-700 rounded text-sm hover:bg-gray-600">Test Conexión</button>
+      </div>
+      <div id="testResult" class="mt-2 text-xs"></div>
+    </div>
+  </div>
+
+  <div class="bg-gray-800 rounded-lg p-4 mb-6">
+    <h2 class="text-sm font-semibold text-gray-300 mb-2">Logs</h2>
+    <pre id="logOutput" class="text-xs text-gray-400 font-mono h-48 overflow-y-auto bg-gray-900 rounded p-2">Esperando logs...</pre>
+  </div>
+</div>
+
+<script>
+const API = '/api';
+let agentId = 'desconocido';
+
+async function fetchJSON(url, opts = {}) {
+  const r = await fetch(url, opts);
+  return r.json();
+}
+
+async function loadStatus() {
+  try {
+    const h = await fetchJSON(API + '/health');
+    document.getElementById('deviceCount').textContent = h.devices_found ?? '-';
+    document.getElementById('queueSize').textContent = h.store?.queue_size ?? h.queue_size ?? '-';
+    document.getElementById('mqttStatus').textContent = h.mqtt ?? 'desconocido';
+    document.getElementById('uptime').textContent = h.uptime ?? '-';
+    if (h.device_id) {
+      agentId = h.device_id;
+      document.getElementById('agentInfo').textContent = h.device_id + ' v' + (h.version || '-');
+    }
+  } catch { document.getElementById('agentInfo').textContent = 'Sin conexión al agente'; }
+}
+
+async function loadDevices() {
+  try {
+    const data = await fetchJSON(API + '/devices');
+    const list = document.getElementById('deviceList');
+    if (!data.devices || data.devices.length === 0) {
+      list.innerHTML = '<p class="text-sm text-gray-500">Ningún dispositivo detectado. Escanea la red.</p>';
+      return;
+    }
+    list.innerHTML = data.devices.map(d => `
+      <div class="flex items-center justify-between bg-gray-700/50 rounded px-3 py-2">
+        <div>
+          <p class="text-sm font-medium">${d.ip || d.IP || '?'}</p>
+          <p class="text-xs text-gray-400">${d.model || 'ZKTeco'} ${d.serial ? '· SN: '+d.serial : ''}</p>
+        </div>
+        <span class="text-xs px-2 py-0.5 rounded-full ${d.online || d.Online ? 'bg-green-700 text-green-200' : 'bg-gray-600 text-gray-300'}">${d.online || d.Online ? 'Online' : 'Offline'}</span>
+      </div>
+    `).join('');
+  } catch { document.getElementById('deviceList').innerHTML = '<p class="text-sm text-red-400">Error al cargar dispositivos</p>'; }
+}
+
+async function loadLogs() {
+  try {
+    const r = await fetch(API + '/logs');
+    const text = await r.text();
+    document.getElementById('logOutput').textContent = text || '(sin logs)';
+  } catch { document.getElementById('logOutput').textContent = '(sin conexión)'; }
+}
+
+async function scanDevices() {
+  const btn = event.target;
+  btn.disabled = true; btn.textContent = 'Escaneando...';
+  await fetchJSON(API + '/scan', { method: 'POST' });
+  setTimeout(() => { btn.disabled = false; btn.textContent = 'Escanear'; loadDevices(); }, 2000);
+}
+
+async function testConnection() {
+  const ip = document.getElementById('cfgIp').value;
+  const port = document.getElementById('cfgPort').value || '4370';
+  const res = document.getElementById('testResult');
+  if (!ip) { res.textContent = 'Ingresa una IP'; return; }
+  res.textContent = 'Probando...';
+  try {
+    const data = await fetchJSON(API + '/test-connection', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ip, port: parseInt(port)}) });
+    if (data.success) { res.innerHTML = '<span class="text-green-400">✓ Conexión exitosa</span>'; } else { res.innerHTML = '<span class="text-red-400">✗ ' + (data.error || 'Falló') + '</span>'; }
+  } catch { res.innerHTML = '<span class="text-red-400">✗ Error de conexión</span>'; }
+}
+
+async function restartAgent() {
+  if (!confirm('¿Reiniciar el agente edge?')) return;
+  await fetchJSON(API + '/restart', { method: 'POST' });
+}
+
+setInterval(() => { loadStatus(); loadDevices(); loadLogs(); }, 5000);
+loadStatus(); loadDevices(); loadLogs();
+</script>
+</body>
+</html>

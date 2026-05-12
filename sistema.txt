@@ -1,0 +1,109 @@
+Actúa como un Arquitecto Senior de Software especializado en sistemas biométricos empresariales, IoT, SaaS multiempresa y comunicación TCP/IP con dispositivos ZKTeco.
+
+Necesito diseñar una plataforma cloud moderna para administrar equipos biométricos ZKTeco instalados en múltiples sucursales, donde cada sucursal tiene una PC Windows (caja) conectada localmente a los dispositivos biométricos mediante TCP/IP.
+
+OBJETIVO:
+Construir una arquitectura SaaS escalable y segura que permita:
+
+- Administración remota de equipos biométricos
+- Gestión multiempresa
+- Sincronización de usuarios
+- Descarga y sincronización de marcaciones
+- Monitoreo en tiempo real
+- Operación offline temporal
+- Comunicación segura entre sucursales y cloud
+- Gestión centralizada desde navegador web
+
+REQUISITOS TÉCNICOS:
+
+ARQUITECTURA:
+- Arquitectura Edge + Cloud SaaS
+- Agente local instalado en Windows
+- Backend centralizado en la nube
+- Comunicación segura TLS
+- Escalable horizontalmente
+- Soporte para cientos o miles de dispositivos
+
+AGENTE LOCAL:
+- Desarrollado en Golang
+- Ejecutarse como Windows Service
+- Detectar automáticamente equipos ZKTeco en LAN
+- Comunicarse vía TCP/IP con biométricos
+- Hacer polling inteligente de eventos
+- Mantener cola offline si no hay internet
+- Reintentos automáticos
+- Auto actualización remota
+- Logs locales
+- Soporte Docker opcional
+
+BACKEND CLOUD:
+- NestJS
+- PostgreSQL
+- Arquitectura multi-tenant
+- API REST
+- WebSocket y/o MQTT
+- JWT Authentication
+- RBAC
+- Gestión de sucursales
+- Gestión de dispositivos
+- Gestión de empleados
+- Reportes y auditoría
+
+FRONTEND:
+- Next.js
+- Dashboard en tiempo real
+- Estado online/offline de equipos
+- Administración de usuarios
+- Reportes de asistencia
+- Panel multiempresa
+- UI moderna tipo SaaS enterprise
+
+COMUNICACIÓN:
+- MQTT para eventos y comandos en tiempo real
+- HTTPS para sincronización
+- NO usar IP pública fija
+- NO abrir puertos en routers
+- NO depender de VPN obligatoria
+
+FUNCIONES IMPORTANTES:
+- Sincronización bidireccional
+- Crear usuarios remotamente
+- Descargar marcaciones automáticamente
+- Monitorear conectividad
+- Alertas de dispositivos offline
+- Sincronización incremental
+- Tolerancia a fallos
+- Alta disponibilidad
+
+SEGURIDAD:
+- TLS
+- Tokens JWT
+- Cifrado de credenciales
+- Validación de dispositivos
+- Auditoría completa
+- Protección contra duplicados
+
+REQUISITOS EXTRA:
+- Explica arquitectura completa
+- Diseña flujo de comunicación
+- Explica cómo manejar múltiples sucursales
+- Explica cómo manejar dispositivos offline
+- Explica estrategia de escalabilidad
+- Explica estructura de base de datos
+- Explica comunicación con ZKTeco
+- Explica cómo implementar el agente Windows
+- Explica despliegue con Docker
+- Explica mejores prácticas enterprise
+
+ENTREGA:
+- Arquitectura completa
+- Diagramas
+- Stack tecnológico
+- Estructura de carpetas
+- Flujo de eventos
+- Diseño DB
+- Buenas prácticas
+- Estrategia de escalado
+- Estrategia de seguridad
+- Estrategia DevOps
+- Estrategia SaaS multiempresa

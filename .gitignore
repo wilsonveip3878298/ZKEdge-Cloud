@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.next/
+.env
+.env.local
+*.exe
+*.log
+data/
+.DS_Store
+github.txt
+ingreso-error.txt
+sistema-edge.exe
+backend/node_modules/
+frontend/node_modules/
+backend/dist/
+frontend/.next/

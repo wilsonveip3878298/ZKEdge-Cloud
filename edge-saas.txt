@@ -1,0 +1,133 @@
+Actúa como Arquitecto Enterprise Senior especializado en:
+
+- Edge Computing
+- SaaS empresarial
+- Sistemas biométricos ZKTeco
+- Recursos Humanos
+- IoT empresarial
+- Arquitectura híbrida local/cloud
+
+Necesito un RESUMEN ARQUITECTÓNICO CLARO para definir correctamente qué funcionalidades deben ejecutarse LOCALMENTE (Edge Computing) y cuáles deben ejecutarse en la NUBE (Cloud SaaS).
+
+OBJETIVO:
+
+Quiero evitar duplicar funciones entre:
+- Edge Dashboard
+- Plataforma SaaS Cloud
+
+Porque actualmente parecen hacer lo mismo.
+
+Necesito definir claramente:
+- responsabilidades del edge
+- responsabilidades del cloud
+- qué procesos viven localmente
+- qué procesos viven en la nube
+- cómo separar correctamente ambas capas
+
+CONTEXTO:
+
+Cada sucursal tendrá:
+- Equipos biométricos ZKTeco
+- Una PC Windows local
+- Agente Edge instalado
+
+El sistema debe funcionar incluso si internet falla temporalmente.
+
+IMPORTANTE:
+El edge NO debe convertirse en otro sistema administrativo completo.
+
+La administración empresarial principal debe vivir en la nube.
+
+QUIERO DEFINIR:
+
+========================
+EDGE COMPUTING (LOCAL)
+========================
+
+Qué debe hacer SOLO el sistema local:
+
+- Comunicación TCP/IP con biométricos
+- Captura de marcaciones
+- Cola offline
+- Caché temporal
+- Reintentos automáticos
+- Buffer local
+- Sincronización al cloud
+- Monitoreo básico de dispositivos
+- Procesamiento temporal local
+- Tolerancia a caída de internet
+
+Validar:
+- Qué más debería vivir localmente
+- Qué NO debería vivir localmente
+- Qué errores evitar
+
+========================
+CLOUD SAAS (NUBE)
+========================
+
+Qué debe hacer SOLO la plataforma cloud:
+
+- Dashboard empresarial
+- Recursos Humanos
+- Gestión de empleados
+- Gestión multiempresa
+- Gestión de sucursales
+- Horarios laborales
+- Turnos
+- Asistencia
+- Retrasos
+- Faltas
+- Horas trabajadas
+- Vacaciones
+- Permisos
+- Reportes PDF/Excel
+- Auditoría
+- Notificaciones
+- Alertas
+- Estadísticas
+- Panel administrativo
+- Roles y permisos
+- Dashboard ejecutivo
+- Tiempo real centralizado
+
+Agregar sugerencias de módulos enterprise modernos:
+
+- KPI empresariales
+- IA para asistencia
+- Análisis de comportamiento
+- Predicción de ausencias
+- Control de productividad
+- App móvil empleados
+- Geolocalización
+- Firma digital
+- Workflow RRHH
+- Payroll integration
+- API empresarial
+- BI dashboards
+- Multi tenant SaaS
+
+QUIERO QUE EXPLIQUES:
+
+1. Diferencia real entre Edge y SaaS
+2. Qué responsabilidades separar
+3. Qué lógica NO duplicar
+4. Qué vive localmente
+5. Qué vive en cloud
+6. Cómo trabajan juntos
+7. Cómo sincronizan
+8. Cómo evitar conflictos
+9. Cómo diseñar una arquitectura profesional
+10. Cómo se diseña esto en empresas enterprise reales
+
+IMPORTANTE:
+
+Quiero una respuesta tipo CTO/Arquitecto Enterprise.
+
+No quiero teoría genérica.
+
+Quiero una separación clara entre:
+- Edge local
+- Plataforma SaaS cloud
+- Dashboard local
+- Dashboard empresarial cloud

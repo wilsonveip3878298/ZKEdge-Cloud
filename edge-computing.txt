@@ -1,0 +1,43 @@
+MODELO ARQUITECTÓNICO:
+
+El sistema debe diseñarse bajo arquitectura:
+
+- Edge Computing + Cloud SaaS
+- Distributed Edge Nodes
+- Multi-tenant SaaS
+- Event-driven architecture
+
+EDGE COMPUTING:
+
+Cada sucursal funcionará como un nodo edge autónomo mediante un agente local instalado en Windows.
+
+RESPONSABILIDADES DEL EDGE:
+- Comunicación TCP/IP con biométricos ZKTeco
+- Procesamiento local de eventos
+- Cola offline
+- Caché local
+- Reintentos automáticos
+- Buffer de sincronización
+- Ejecución local aunque internet falle
+- Envío seguro al cloud
+- Monitoreo del hardware local
+
+REQUISITOS EDGE:
+- Tolerancia a desconexión
+- Sincronización eventual
+- Persistencia local temporal
+- Bajo consumo de recursos
+- Recuperación automática
+- Actualización remota del agente
+
+ARQUITECTURA DE EVENTOS:
+- Event-driven
+- Pub/Sub
+- MQTT broker
+- Procesamiento asíncrono
+- Queue system
+- Retry policies
+- Dead letter queues
+
+OBJETIVO:
+Reducir dependencia directa del cloud y permitir operación continua incluso con fallos de internet.

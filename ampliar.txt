@@ -1,0 +1,92 @@
+FRONTEND ENTERPRISE (AMPLIAR):
+
+Desarrollar un frontend SaaS enterprise moderno usando:
+
+- Next.js 15
+- TypeScript
+- TailwindCSS
+- Shadcn/UI
+- Zustand o Redux Toolkit
+- React Query / TanStack Query
+- Socket.IO o MQTT client
+- PWA support
+
+REQUISITOS FRONTEND:
+
+AUTENTICACIÓN:
+- Login JWT
+- Refresh tokens
+- Multiempresa
+- Roles y permisos (RBAC)
+- 2FA opcional
+
+DASHBOARD:
+- Equipos online/offline en tiempo real
+- Estado de sucursales
+- Última sincronización
+- Gráficas de asistencia
+- Alertas críticas
+- Eventos en vivo
+- Monitoreo centralizado
+
+GESTIÓN:
+- Empresas
+- Sucursales
+- Equipos biométricos
+- Empleados
+- Horarios
+- Usuarios del sistema
+- Roles y permisos
+
+TIEMPO REAL:
+- Actualización en vivo de estados
+- Notificaciones push
+- Logs live
+- Eventos de dispositivos
+- Reconexión automática
+
+REPORTES:
+- Asistencia
+- Retrasos
+- Horas trabajadas
+- Exportación Excel/PDF
+- Reportes filtrados
+- Reportes por sucursal
+
+UX/UI:
+- Diseño moderno tipo SaaS
+- Responsive
+- Dark mode
+- Sidebar dinámica
+- Multi tenant UI
+- Skeleton loaders
+- Toast notifications
+- Data tables avanzadas
+- Filtros complejos
+- Búsqueda global
+
+ARQUITECTURA FRONTEND:
+- Modular
+- Escalable
+- Feature-based architecture
+- Lazy loading
+- Route protection
+- Middleware
+- SSR + CSR híbrido
+
+ESTRUCTURA:
+- Explica estructura de carpetas
+- Explica arquitectura frontend
+- Explica manejo de estado
+- Explica realtime
+- Explica consumo API
+- Explica manejo de errores
+- Explica seguridad frontend
+
+DEVOPS:
+- Docker frontend
+- CI/CD
+- Variables de entorno
+- Build production
+- Nginx reverse proxy
+- CDN optimization

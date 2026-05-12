@@ -1,0 +1,169 @@
+Actúa como un Arquitecto Enterprise Senior especializado en:
+
+- Edge Computing
+- Sistemas biométricos ZKTeco
+- SaaS multiempresa
+- Arquitectura híbrida local/cloud
+- IoT empresarial
+- Infraestructura distribuida
+- Seguridad enterprise
+- Sistemas de asistencia y control de acceso
+
+Necesito que realices una AUDITORÍA TÉCNICA COMPLETA de mi arquitectura de software para validar si el diseño es correcto, escalable y profesional.
+
+CONTEXTO DEL PROYECTO:
+
+Estoy desarrollando una plataforma biométrica moderna para administración de equipos ZKTeco.
+
+IMPORTANTE:
+El sistema NO será 100% cloud.
+
+La arquitectura será híbrida:
+
+- Parte local (Edge Computing)
+- Parte centralizada (Cloud/SaaS)
+
+Cada sucursal tendrá:
+- Equipos biométricos ZKTeco
+- Una PC Windows (caja)
+- Un agente local instalado
+
+Los biométricos funcionan por TCP/IP local.
+
+El sistema debe permitir:
+- Administración remota
+- Monitoreo centralizado
+- Sincronización automática
+- Operación offline
+- Multiempresa
+- Tiempo real
+
+OBJETIVO DE LA AUDITORÍA:
+
+Necesito validar:
+
+- Si la arquitectura es correcta
+- Si Edge Computing está bien implementado
+- Si el cloud está correctamente planteado
+- Si debo mover más lógica al edge
+- Si el diseño soporta escalabilidad enterprise
+- Si el modelo híbrido local/cloud es correcto
+- Si la comunicación es segura
+- Si existen riesgos técnicos
+- Si existen cuellos de botella
+- Si la arquitectura está sobre diseñada
+- Si la arquitectura está sub diseñada
+- Si existen mejores prácticas que faltan
+
+ARQUITECTURA ACTUAL:
+
+EDGE LOCAL:
+- PC Windows existente en sucursal
+- Agente local en Golang
+- Comunicación TCP/IP con ZKTeco
+- Cola offline
+- Caché local
+- Sincronización hacia cloud
+- Polling inteligente
+- Procesamiento local de eventos
+
+CLOUD:
+- NestJS
+- PostgreSQL
+- MQTT
+- API REST
+- WebSocket
+- Dashboard web
+- Multiempresa
+
+FRONTEND:
+- Next.js
+- Tiempo real
+- Dashboard centralizado
+- Gestión de dispositivos
+- Gestión de empleados
+- Reportes
+
+COMUNICACIÓN:
+- MQTT
+- HTTPS
+- TLS
+- JWT
+
+NO QUIERO:
+- VPN obligatoria
+- Abrir puertos
+- IP pública fija
+- Dependencia total del cloud
+
+QUIERO VALIDAR:
+
+1. ¿La arquitectura híbrida está correctamente diseñada?
+2. ¿Edge Computing realmente aporta valor aquí?
+3. ¿Qué lógica debe quedar en local?
+4. ¿Qué lógica debe vivir en cloud?
+5. ¿Cómo debería manejar sincronización offline?
+6. ¿Cómo evitar pérdida de marcaciones?
+7. ¿Cómo manejar miles de dispositivos?
+8. ¿Cómo manejar multiempresa?
+9. ¿Qué riesgos existen?
+10. ¿Qué problemas aparecerán al escalar?
+11. ¿Qué errores comunes estoy cometiendo?
+12. ¿Qué parte debería simplificarse?
+13. ¿Qué parte debería fortalecerse?
+14. ¿Cómo diseñar correctamente el agente Windows?
+15. ¿Qué arquitectura usan soluciones enterprise reales?
+16. ¿Qué tan viable comercialmente es esta arquitectura?
+17. ¿Cómo mejorar tolerancia a fallos?
+18. ¿Cómo diseñar observabilidad y monitoreo?
+19. ¿Cómo implementar actualizaciones remotas?
+20. ¿Cómo manejar reconexión automática?
+
+AUDITORÍA TÉCNICA PROFUNDA:
+
+Analiza:
+- arquitectura
+- seguridad
+- networking
+- rendimiento
+- sincronización
+- concurrencia
+- escalabilidad
+- DevOps
+- observabilidad
+- tolerancia a fallos
+- multi tenant
+- realtime
+- costos de infraestructura
+- mantenibilidad
+- complejidad operativa
+
+QUIERO RESPUESTA DETALLADA:
+
+- Problemas encontrados
+- Riesgos críticos
+- Recomendaciones enterprise
+- Mejoras arquitectónicas
+- Diagramas recomendados
+- Arquitectura ideal
+- Comparación entre local vs cloud
+- Qué dejar en edge
+- Qué dejar en backend
+- Cómo escalar correctamente
+- Qué tecnologías cambiarías
+- Qué tecnologías mantendrías
+- Buenas prácticas enterprise
+- Diseño recomendado final
+
+IMPORTANTE:
+
+No quiero una respuesta genérica.
+
+Quiero una auditoría real tipo CTO/Arquitecto Enterprise con enfoque:
+- SaaS empresarial
+- IoT
+- Edge Computing
+- biométricos TCP/IP
+- sistemas distribuidos
+- alta disponibilidad
+- software comercial escalable

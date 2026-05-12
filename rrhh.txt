@@ -1,0 +1,216 @@
+Actúa como un Arquitecto Enterprise Senior especializado en:
+
+- HR Tech
+- SaaS de Recursos Humanos
+- Sistemas de asistencia y planillas
+- Payroll systems
+- Workforce Management
+- Attendance Management
+- ERP de RRHH modernos
+- SaaS multiempresa enterprise
+
+Necesito diseñar la parte SaaS CLOUD de Recursos Humanos de mi plataforma biométrica enterprise.
+
+CONTEXTO:
+
+La plataforma recibe marcaciones desde dispositivos biométricos ZKTeco mediante un sistema Edge Computing distribuido.
+
+Toda la lógica empresarial y RRHH debe vivir en el CLOUD SAAS.
+
+OBJETIVO:
+
+Diseñar un módulo moderno enterprise de:
+
+- Recursos Humanos
+- Asistencia
+- Planillas
+- Horarios
+- Faltas
+- Retrasos
+- Descuentos
+- Horas extras
+- Turnos
+- Reportes ejecutivos
+- Analytics RRHH
+
+IMPORTANTE:
+
+NO quiero un sistema básico de asistencia.
+
+Quiero un sistema moderno tipo:
+
+- Buk
+- Factorial
+- Deel
+- Workday
+- Odoo HR
+- SAP SuccessFactors
+- UKG
+- OrangeHRM
+
+========================
+MÓDULOS PRINCIPALES
+========================
+
+1. EMPLEADOS
+- CRUD completo
+- Multiempresa
+- Multi sucursal
+- Historial laboral
+- Contratos
+- Cargos
+- Áreas
+- Centros de costo
+- Documentos
+- Firma digital
+- Foto
+- Estado laboral
+
+2. ASISTENCIA
+- Marcaciones biométricas
+- Check-in / Check-out
+- Detección automática de retrasos
+- Faltas automáticas
+- Horas trabajadas
+- Horas extras
+- Turnos rotativos
+- Turnos nocturnos
+- Tolerancias
+- Feriados
+- Horarios flexibles
+- Doble turno
+- Reglas configurables
+- Corrección manual auditada
+- Detección de anomalías
+
+3. HORARIOS
+- Horarios por empleado
+- Horarios por sucursal
+- Horarios rotativos
+- Calendarios laborales
+- Reglas de asistencia
+- Configuración de tolerancias
+- Configuración de overtime
+- Configuración de descansos
+- Turnos automáticos
+
+4. PLANILLAS / PAYROLL
+- Generación automática de planillas
+- Descuentos automáticos
+- Descuentos por retrasos
+- Descuentos por faltas
+- Horas extras
+- Bonos
+- Comisiones
+- Anticipos
+- Liquidaciones
+- Aguinaldos
+- AFP
+- Impuestos
+- Aportes
+- Subsidios
+- Exportación bancaria
+- Integración contable
+- Recibos PDF
+
+5. REPORTES ENTERPRISE
+- Reportes de asistencia
+- Reportes de faltas
+- Reportes de retrasos
+- Reportes de productividad
+- Reportes de horas extras
+- Dashboard ejecutivo
+- KPIs RRHH
+- Analytics
+- Exportación Excel/PDF
+- BI dashboards
+- Gráficas avanzadas
+- Reportes por sucursal
+- Reportes multiempresa
+
+6. WORKFLOW RRHH
+- Solicitudes de vacaciones
+- Permisos
+- Justificaciones
+- Aprobaciones
+- Workflow multinivel
+- Notificaciones
+- Auditoría completa
+
+7. ANALYTICS MODERNOS
+- KPIs de asistencia
+- Predicción de ausencias
+- IA para anomalías
+- Empleados con riesgo
+- Tendencias
+- Heatmaps de asistencia
+- Métricas por sucursal
+- Ranking puntualidad
+
+8. APP EMPLEADOS
+- Ver asistencia
+- Ver retrasos
+- Solicitar permisos
+- Ver planilla
+- Descargar recibos
+- Notificaciones push
+- Geolocalización opcional
+
+========================
+ARQUITECTURA
+========================
+
+Backend:
+- NestJS
+- PostgreSQL
+- Redis
+- Event-driven
+- Microservices opcional
+- Multi-tenant SaaS
+
+Frontend:
+- Next.js
+- Dashboard enterprise moderno
+- Tiempo real
+- Data tables avanzadas
+- Filtros complejos
+- KPIs
+- Gráficas
+
+========================
+QUIERO QUE EXPLIQUES
+========================
+
+1. Cómo diseñar correctamente un módulo RRHH enterprise
+2. Cómo calcular asistencia correctamente
+3. Cómo manejar reglas complejas
+4. Cómo diseñar motor de planillas
+5. Cómo manejar descuentos automáticos
+6. Cómo diseñar reportes modernos
+7. Cómo implementar analytics RRHH
+8. Cómo manejar multiempresa
+9. Cómo escalar payroll enterprise
+10. Cómo diseñar auditoría completa
+11. Cómo evitar errores en asistencia
+12. Cómo manejar millones de marcaciones
+13. Cómo diseñar KPIs ejecutivos
+14. Cómo diseñar arquitectura profesional tipo HR Tech SaaS
+15. Qué módulos faltan para competir comercialmente
+
+========================
+IMPORTANTE
+========================
+
+Quiero un diseño moderno y comercialmente competitivo.
+
+No quiero un sistema básico de marcaciones.
+
+Quiero una plataforma HR Tech SaaS enterprise moderna con:
+- asistencia
+- payroll
+- analytics
+- RRHH
+- workflows
+- dashboards ejecutivos
+- automatización
+- BI empresarial

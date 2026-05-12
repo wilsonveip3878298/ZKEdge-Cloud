@@ -1,0 +1,382 @@
+Actúa como un Arquitecto Enterprise Senior especializado en:
+
+- Edge Computing
+- IoT Device Gateways
+- Sistemas biométricos ZKTeco
+- TCP/IP device management
+- Attendance Systems
+- Infraestructura distribuida
+- SaaS híbrido local/cloud
+- Device provisioning enterprise
+- Sync Engines enterprise
+
+Necesito diseñar COMPLETAMENTE el EDGE LOCAL de mi plataforma biométrica enterprise moderna.
+
+CONTEXTO:
+
+Cada sucursal tendrá:
+- Equipos biométricos ZKTeco
+- Una PC Windows local (caja)
+- Un agente EDGE instalado
+
+IMPORTANTE:
+Los biométricos funcionan únicamente dentro de la red LAN local mediante TCP/IP.
+
+El CLOUD NO debe conectarse directamente a los biométricos.
+
+Toda comunicación, sincronización e importación debe pasar obligatoriamente por el EDGE LOCAL.
+
+OBJETIVO:
+
+Diseñar un EDGE NODE profesional que funcione como:
+
+- IoT Device Gateway
+- Attendance Import Engine
+- TCP/IP Bridge
+- Local Device Manager
+- Sync Engine
+- Secure Device Connector
+
+========================
+RESPONSABILIDADES DEL EDGE
+========================
+
+El EDGE debe encargarse EXCLUSIVAMENTE de:
+
+- Comunicación TCP/IP con ZKTeco
+- Descubrimiento automático de dispositivos LAN
+- Escaneo de IPs locales
+- Detección automática de biométricos
+- Lectura de serial del dispositivo
+- Lectura de modelo y firmware
+- Gestión de commkey/password
+- Configuración IP local
+- Configuración de puertos
+- Test de conectividad TCP/IP
+- Sincronización horaria
+- Captura de marcaciones
+- Importación automática de eventos
+- Importación manual de eventos
+- Cola offline SQLite
+- Buffer temporal
+- Incremental sync
+- Cursor tracking
+- Retry queue
+- Dead letter queue
+- Reintentos automáticos
+- Heartbeat al cloud
+- Health checks
+- Monitoreo online/offline
+- Recepción de comandos desde cloud
+- Reinicio remoto de dispositivos
+- Logs locales
+- Auto actualización del edge
+- Sincronización segura MQTT/HTTPS
+- Deduplicación de eventos
+- Event replay
+- Cache temporal
+
+========================
+DEVICE IDENTITY
+========================
+
+La identidad REAL del biométrico NO debe basarse en IP local.
+
+Debe basarse en:
+
+- serial único
+- MAC address
+- modelo
+- firmware
+- edge_id
+- branch_id
+
+Ejemplo:
+
+{
+  "serial": "ZK6A22003991",
+  "mac": "AA:BB:CC:DD",
+  "model": "MB360",
+  "firmware": "6.66"
+}
+
+IMPORTANTE:
+- La IP local puede cambiar
+- El serial es la identidad permanente
+- El cloud debe mapear SERIAL → Sucursal → Empresa
+
+========================
+COMMKEY / PASSWORD
+========================
+
+Muchos equipos ZKTeco utilizan:
+
+- commkey
+- device password
+- auth key
+
+El EDGE debe:
+
+- Solicitar credenciales localmente
+- Validar conexión TCP
+- Guardar credenciales cifradas
+- Manejar reconexión automática
+- Proteger secrets
+
+IMPORTANTE:
+- NO guardar passwords en texto plano
+- Usar almacenamiento cifrado
+- El cloud NO debe acceder directamente al password real
+
+========================
+IMPORTACIÓN DE MARCACIONES
+========================
+
+Las marcaciones viven físicamente dentro del biométrico.
+
+El EDGE es el IMPORTER oficial.
+
+IMPORTACIÓN AUTOMÁTICA:
+- Polling inteligente
+- Intervalos configurables
+- Incremental sync
+- Cursor tracking
+- Importar solo eventos nuevos
+- Deduplicación UUID
+- Reintentos automáticos
+- Offline queue
+- Replay seguro
+
+IMPORTACIÓN MANUAL:
+- Sincronizar ahora
+- Reimportar rango de fechas
+- Reprocesar eventos
+- Reset cursor
+- Retry eventos fallidos
+- Descargar logs manualmente
+- Releer dispositivo completo
+
+Ejemplo:
+
+[ Sincronizar ahora ]
+[ Reimportar 01/05/2026 - 10/05/2026 ]
+[ Reset sync cursor ]
+[ Retry eventos fallidos ]
+
+========================
+SYNC ENGINE
+========================
+
+Diseñar un motor enterprise de sincronización con:
+
+- incremental sync
+- cursor por dispositivo
+- tracking de eventos
+- event replay
+- deduplicación
+- retry queue
+- dead letter queue
+- conflict handling
+- event sourcing ligero
+- validación de eventos
+- timestamps UTC
+- manejo offline
+
+Ejemplo de evento normalizado:
+
+{
+  "event_uuid": "uuid-v7",
+  "device_serial": "ZK6A22003991",
+  "employee_code": "EMP-100",
+  "timestamp": "2026-05-12T08:00:00Z",
+  "event_type": "checkin",
+  "branch_id": 4,
+  "edge_id": "EDGE-01"
+}
+
+========================
+RETENCIÓN DE DATOS
+========================
+
+Diseñar políticas enterprise:
+
+- Mantener marcaciones temporales en ZKTeco
+- Mantener buffer temporal SQLite
+- Histórico permanente en cloud
+- Limpieza automática
+- Replay seguro
+- Retención configurable
+
+Ejemplo:
+- 30 días en biométrico
+- 7 días en SQLite edge
+- Histórico permanente en cloud
+
+========================
+LOCAL TECHNICAL DASHBOARD
+========================
+
+Necesito un dashboard LOCAL técnico minimalista:
+
+http://localhost:8080
+
+o
+
+http://IP-CAJA:8080
+
+SOLO para administración técnica.
+
+Debe permitir:
+
+- Escanear LAN
+- Detectar biométricos
+- Ver seriales
+- Ver modelos
+- Ver firmware
+- Configurar IP
+- Configurar puertos
+- Configurar commkey
+- Test conexión TCP
+- Ver estado online/offline
+- Estado MQTT
+- Ver logs
+- Ver cola offline
+- Ver eventos pendientes
+- Reiniciar edge
+- Ejecutar sincronización manual
+- Reset cursor
+- Retry queue
+- Ver último sync
+
+NO debe incluir:
+- RRHH
+- empleados
+- horarios
+- reportes
+- planillas
+- dashboards SaaS
+- analytics empresariales
+
+========================
+SINCRONIZACIÓN CLOUD
+========================
+
+El EDGE debe subir al cloud solamente:
+
+- eventos normalizados
+- metadata dispositivos
+- estados online/offline
+- heartbeat
+- errores importantes
+- métricas técnicas
+
+Ejemplo:
+
+{
+  "device_serial": "ZK6A22003991",
+  "model": "MB360",
+  "firmware": "6.66",
+  "local_ip": "192.168.1.201",
+  "branch_id": 4,
+  "edge_id": "EDGE-SCZ-01",
+  "status": "online"
+}
+
+IMPORTANTE:
+- El cloud solo monitorea
+- El cloud NO accede directamente a IPs locales
+- El cloud NO controla TCP/IP directo
+
+========================
+DEVICE LIFECYCLE MANAGEMENT
+========================
+
+Diseñar estados enterprise:
+
+- pending
+- provisioning
+- active
+- offline
+- maintenance
+- replaced
+- blocked
+
+========================
+ARQUITECTURA
+========================
+
+Flujo esperado:
+
+ZKTeco
+   │
+ TCP/IP LAN
+   │
+EDGE LOCAL
+   │
+ MQTT / HTTPS TLS
+   │
+CLOUD SAAS
+   │
+Frontend Web
+
+========================
+STACK TECNOLÓGICO
+========================
+
+EDGE:
+- Golang
+- SQLite
+- MQTT Client
+- Embedded Web UI
+- Gin/Fiber API
+- TCP Socket Manager
+
+CLOUD:
+- NestJS
+- PostgreSQL
+- MQTT Broker
+- WebSocket
+
+FRONTEND:
+- Next.js
+- Dashboard enterprise
+- Tiempo real
+
+========================
+QUIERO QUE EXPLIQUES
+========================
+
+1. Cómo diseñar correctamente un IoT Device Gateway
+2. Cómo implementar descubrimiento LAN
+3. Cómo manejar TCP/IP con ZKTeco
+4. Cómo gestionar commkeys/passwords
+5. Cómo implementar Device Identity
+6. Cómo diseñar Device Provisioning
+7. Cómo manejar importación automática
+8. Cómo implementar importación manual
+9. Cómo manejar incremental sync
+10. Cómo evitar duplicados
+11. Cómo implementar replay
+12. Cómo manejar fallos de internet
+13. Cómo implementar retry queues
+14. Cómo diseñar cursor tracking
+15. Cómo manejar conflictos
+16. Cómo proteger credenciales
+17. Cómo implementar health checks
+18. Cómo diseñar observabilidad
+19. Cómo escalar cientos de biométricos
+20. Cómo implementar auto update
+21. Cómo diseñar arquitectura enterprise moderna
+
+IMPORTANTE:
+
+Quiero una respuesta tipo:
+- Enterprise Architect
+- IoT Architect
+- Edge Computing Specialist
+- Attendance Systems Expert
+- Device Management Expert
+
+No quiero teoría genérica.
+
+Quiero arquitectura real profesional para EDGE enterprise moderno de biométricos ZKTeco.

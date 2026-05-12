@@ -1,0 +1,17 @@
+agent:
+  device_id: "AGENT-001"
+  poll_interval: 5
+  log_level: "info"
+  data_dir: "C:\\ProgramData\\SistemaAgent"
+
+cloud:
+  api_url: "https://cloud.sistema.local"
+  mqtt_broker: "tls://cloud.sistema.local:8883"
+  auth_token: "your-auth-token"
+  sync_interval: 30
+  offline_queue: true
+
+zkteco:
+  tcp_port: 4370
+  timeout: 10
+  retry_count: 3
